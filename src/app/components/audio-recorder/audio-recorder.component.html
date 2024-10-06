@@ -1,0 +1,41 @@
+<div class="content" role="main">
+
+    <div class="container shadow min-vh-100 py-2" style="width: 1000px;">
+        <div class="row">
+            <div class="col">
+                <h2 class="font-weight-light"><p class="text-center">Little Red Riding Hood</p></h2>
+                <p class="text-justify">
+
+                    Once upon a time there was a dear little girl who was loved by every one who looked at her, but most of all by her grandmother, and there was nothing that she would not have given to the child. Once she gave her a little cap of red velvet, which suited her so well that she would never wear anything else. So she was always called Little Red Riding Hood.
+
+One day her mother said to her, "Come, Little Red Riding Hood, here is a piece of cake and a bottle of wine. Take them to your grandmother, she is ill and weak, and they will do her good. Set out before it gets hot, and when you are going, walk nicely and quietly and do not run off the path, or you may fall and break the bottle, and then your grandmother will get nothing. And when you go into her room, don't forget to say, good-morning, and don't peep into every corner before you do it."
+
+                </p>                
+            </div>
+
+            <div class="col">
+                <h2 class="font-weight-light"><p class="text-center">Record audio here 😊</p></h2>
+
+                  <div class="row justify-content-center pt-2 pb-2">
+                    <button title="Click here to start recording action" class="btn-mic w-auto" (click)="startRecording()"
+                      *ngIf="!isRecording" style="margin-right: 3px;">
+                      <img src="assets/images/play.png" style="width: 20px;height: 20px;" alt="Click here to start recording"/>
+                    </button>
+                    <button title="Click here to stop recording" class="btn-stop w-auto" (click)="stopRecording()" *ngIf="isRecording"
+                      style="margin-right: 3px;">
+                      <img src="assets/images/stop.jpg" style="width: 20px;height: 20px;" alt="Click here to stop recording"/>
+                    </button>
+                    <audio #audioPlayer controls style="margin: 10px;"></audio>                    
+                  </div>       
+                  
+                  <div class="row justify-content-center pt-2 pb-2">
+                    <a *ngIf="audioURL" [href]="audioURL" download="recorded_audio.wav">Download last reecorded Audio</a>
+                  </div>
+                                                              
+            </div>
+        </div>
+    </div>
+
+    
+   
+</div> 

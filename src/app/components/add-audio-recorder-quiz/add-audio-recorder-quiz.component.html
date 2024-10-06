@@ -1,0 +1,197 @@
+
+    <div class="table-title">
+     <div class="row">
+       <div class="col-sm-6">
+         <h4><b>Audio recordings quiz update</b></h4>
+         <br>
+       </div>        
+     </div>
+    </div>
+
+    <div class="container d-flex justify-content-left">
+      
+      <div *ngFor="let f of fileInfos | async" class="center-align">
+        <div *ngIf="f.name == question.urlFileName">
+           <div class="d-flex align-items-center">
+             <audio controls>
+               <source [src]="f.url" type="audio/wav">
+             </audio>
+           </div>
+        </div>                                                         
+       </div> 
+
+    </div>
+
+    <br><br>
+
+    <div class="container d-flex justify-content-left">
+
+        <div class="center-align">      
+          <div class="col-10 mb-3">
+            <label class="px-3">Select File: </label>
+            <input type="file" (change)="selectFile($event)" />
+          </div>      
+          <div class="col-2">
+            <button class="btn btn-success btn-sm" (click)="uploadFromBrowser()">
+              Upload
+            </button>
+          </div>
+        </div>
+
+    </div>
+
+    <br><br>
+           
+   <div class="table-title">
+     <div class="row">
+       <div class="col-sm-6">
+         <h4><b>Available options</b></h4>
+         <br>
+       </div>        
+     </div>
+    </div>
+    <div class="submit-form">
+       <div *ngIf="!submitted">
+         <div class="form-group">
+           <input
+             type="text"
+             class="form-control"
+             id="id"
+             required
+             [(ngModel)]="question.id"
+             name="id"
+             hidden
+           />
+         </div>
+   
+         <div class="form-group">
+           <input
+             class="form-control"
+             id="idCategory"
+             required
+             [(ngModel)]="question.idCategory"
+             name="idCategory"
+             hidden
+           />
+         </div>      
+ 
+         <div class="form-group">          
+           <table class="table table-dark" style="width:50%">
+             <thead>
+               <tr class="center-align">
+                 <th>Part 1</th>   
+                 <th>Part 2</th>
+                 <th>Part 3</th>                          
+               </tr>
+             </thead>
+             <tbody>
+               <tr class="center-align">
+                 <td><input
+                   type="text"                        
+                   id="description1"
+                   size="40"
+                   required
+                   [(ngModel)]="question.description1"
+                   name="description1"              
+                 /></td>   
+                 <td><input
+                   type="text"              
+                   id="answer"
+                   size="10"
+                   required
+                   [(ngModel)]="question.answer"
+                   name="answer"
+                 /></td>
+                 <td><input
+                   type="text"
+                   id="description2"
+                   size="40"
+                   required
+                   [(ngModel)]="question.description2"
+                   name="description2"
+                  /></td>                          
+               </tr>        
+               
+               <tr class="center-align">
+ 
+                 <td>
+                     Wrong option
+                 </td>
+                 <td>
+                   
+                   <input
+                   type="text"              
+                   id="wrongAnswer2"
+                   size="10"
+                   required
+                   [(ngModel)]="answer2"
+                   name="wrongAnswer2"/>
+ 
+                 </td>
+                 <td>
+ 
+                 </td>
+ 
+               </tr>
+ 
+ 
+               <tr class="center-align">
+ 
+                 <td>
+                    Wrong option
+                 </td>
+                 <td>
+ 
+                   <input
+                   type="text"              
+                   id="wrongAnswer3"
+                   size="10"
+                   required
+                   [(ngModel)]="answer3"
+                   name="wrongAnswer3"/>
+ 
+                 </td>
+                 <td>
+                   
+                 </td>
+ 
+               </tr>
+
+
+               <tr class="center-align">
+ 
+                <td>
+                    Wrong option
+                </td>
+                <td>
+
+                  <input
+                  type="text"              
+                  id="wrongAnswer3"
+                  size="10"
+                  required
+                  [(ngModel)]="answer4"
+                  name="wrongAnswer3"/>
+
+                </td>
+                <td>
+                  
+                </td>
+
+              </tr>
+ 
+             </tbody>          
+           </table>    
+          </div>  
+         <br> 
+         <button (click)="saveQuestion()" class="btn btn-primary ml-1">Apply changes</button>
+       </div>   
+    </div>
+ 
+    
+      <div *ngIf="submitted">
+        <h4>Questions and the audio were updated successfully!</h4>
+        <button class="btn btn-primary ml-1" (click)="getListOfQuestions()" >View questions</button>
+      </div>
+
+ 

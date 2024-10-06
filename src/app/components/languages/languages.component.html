@@ -1,0 +1,164 @@
+<div class="container-xl">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h4><b>Grammar practice - part 1  (10 pts)</b></h4>
+          </div>        
+        </div>
+      </div>
+
+      <form [formGroup]="form" class="form shadow m-3 p-3" (ngSubmit)="submitForm()">
+        <h2>Complete these sentences with the corresponding verb</h2>
+        <div class="input-group input-group-sm mb-3">
+
+          1) {{ languages[0].questionDTOList[0].description1 }}
+          <input type="text" id="answer1" name="answer1" size="10" formControlName="answer1" />
+          {{ languages[0].questionDTOList[0].description2 }}    
+          <div *ngIf="submitted"><img [src] ="ImagePath[0]" id="img1" style="width: 20px;height: 20px;"></div> 
+           
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+
+          2) {{ languages[0].questionDTOList[1].description1 }}
+          <input type="text" id="answer2" name="answer2" size="10" formControlName="answer2" />
+          {{ languages[0].questionDTOList[1].description2 }}
+          <div *ngIf="submitted"><img [src] ="ImagePath[1]" id="img2" style="width: 20px;height: 20px;"></div>
+       
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+
+          3) {{ languages[0].questionDTOList[2].description1 }}
+          <input type="text" id="answer3" name="answer3" size="10" formControlName="answer3" />
+          {{ languages[0].questionDTOList[2].description2 }}  
+          <div *ngIf="submitted"><img [src] ="ImagePath[2]" id="img3" style="width: 20px;height: 20px;"></div>
+        
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+
+          4) {{ languages[0].questionDTOList[3].description1 }}
+          <input type="text" id="answer4" name="answer4" size="10" formControlName="answer4" />
+          {{ languages[0].questionDTOList[3].description2 }}
+          <div *ngIf="submitted"><img [src] ="ImagePath[3]" id="img4" style="width: 20px;height: 20px;"></div>
+        
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+
+          5) {{ languages[0].questionDTOList[4].description1 }}
+          <input type="text" id="answer5" name="answer5" size="10" formControlName="answer5" />
+          {{ languages[0].questionDTOList[4].description2 }} 
+          <div *ngIf="submitted"><img [src] ="ImagePath[4]" id="img5" style="width: 20px;height: 20px;"></div>
+        
+        </div>
+ 
+        <div *ngIf="submitted">
+          <div *ngIf="score >= 5; else badResult">
+            <h1 style="background-color:rgb(21, 244, 103);"> Your score is : {{ score }}  </h1>
+          </div>        
+          <ng-template #badResult>
+            <h1 style="background-color:tomato;"> Your score is : {{ score }}  </h1>
+          </ng-template>
+        </div>
+
+        
+        <br>
+        <div style="margin-top:10px">
+          <button class="btn btn-primary ml-1" type="submit" *ngIf="!form.get('id')?.value">Send quiz</button>
+          <button class="btn btn-primary ml-1" type="submit" *ngIf="form.get('id')?.value">Clear</button>
+          <button class="btn btn-danger m-1" type="reset" (click)="form.reset(); cleanOtherComponents()">Clear</button>
+        </div>
+      </form>    
+     
+    </div>
+  </div>
+</div>
+
+<div class="container-xl">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h4><b>Grammar practice - part 2  (10 pts)</b></h4>
+          </div>        
+        </div>
+      </div>
+
+      <form [formGroup]="form2" class="form shadow m-3 p-3" (ngSubmit)="submitForm2()">
+        <h2>Select the correct option in these sentences</h2>
+
+        <div class="input-group input-group-sm mb-3">
+          1) {{ languages[0].questionDTOList[10].description1 }}    
+          <select id="dropDown1" name="dropDown1" formControlName="dropDown1">
+            <option value="">Select</option>      
+            <option *ngFor="let data of filterComboBoxValues(dataList, languages[0].questionDTOList[10].id)" value="{{data.description}}">{{data.description}}</option>            
+          </select>
+          {{ languages[0].questionDTOList[10].description2 }}     
+          <div *ngIf="submitted2"><img [src] ="ImagePath[5]" id="img5" style="width: 20px;height: 20px;"></div>   
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+          2) {{ languages[0].questionDTOList[11].description1 }}    
+          <select id="dropDown2" name="dropDown2" formControlName="dropDown2">
+            <option value="">Select</option>   
+            <option *ngFor="let data of filterComboBoxValues(dataList, languages[0].questionDTOList[11].id)" value="{{data.description}}">{{data.description}}</option>            
+          </select>
+          {{ languages[0].questionDTOList[11].description2 }}     
+          <div *ngIf="submitted2"><img [src] ="ImagePath[6]" id="img6" style="width: 20px;height: 20px;"></div>   
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+          3) {{ languages[0].questionDTOList[12].description1 }}    
+          <select id="dropDown3" name="dropDown3" formControlName="dropDown3">
+            <option value="">Select</option>   
+            <option *ngFor="let data of filterComboBoxValues(dataList, languages[0].questionDTOList[12].id)" value="{{data.description}}">{{data.description}}</option>            
+          </select>
+          {{ languages[0].questionDTOList[12].description2 }}     
+          <div *ngIf="submitted2"><img [src] ="ImagePath[7]" id="img7" style="width: 20px;height: 20px;"></div>   
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+          4) {{ languages[0].questionDTOList[13].description1 }}    
+          <select id="dropDown4" name="dropDown4" formControlName="dropDown4">
+            <option value="">Select</option>  
+            <option *ngFor="let data of filterComboBoxValues(dataList, languages[0].questionDTOList[13].id)" value="{{data.description}}">{{data.description}}</option>            
+          </select>
+          {{ languages[0].questionDTOList[13].description2 }}     
+          <div *ngIf="submitted2"><img [src] ="ImagePath[8]" id="img8" style="width: 20px;height: 20px;"></div>   
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+          5) {{ languages[0].questionDTOList[14].description1 }}    
+          <select id="dropDown5" name="dropDown5" formControlName="dropDown5">
+            <option value="">Select</option>  
+            <option *ngFor="let data of filterComboBoxValues(dataList, languages[0].questionDTOList[14].id)" value="{{data.description}}">{{data.description}}</option>            
+          </select>
+          {{ languages[0].questionDTOList[14].description2 }}     
+          <div *ngIf="submitted2"><img [src] ="ImagePath[9]" id="img9" style="width: 20px;height: 20px;"></div>   
+        </div>
+                 
+        <div *ngIf="submitted2">
+          <div *ngIf="score >= 10; else badResult">
+            <h1 style="background-color:rgb(21, 244, 103);"> Your score is : {{ score }}  </h1>
+          </div>        
+          <ng-template #badResult>
+            <h1 style="background-color:tomato;"> Your score is : {{ score }}  </h1>
+          </ng-template>
+        </div>
+        
+        <br>
+        <div style="margin-top:10px">
+          <button class="btn btn-primary ml-1" type="submit" *ngIf="!form.get('id')?.value">Send quiz</button>
+          <button class="btn btn-primary ml-1" type="submit" *ngIf="form.get('id')?.value">Clear</button>
+          <button class="btn btn-danger m-1" type="reset" (click)="form.reset(); cleanOtherComponents2()">Clear</button>
+        </div>
+      </form>    
+     
+    </div>
+  </div>
+</div>

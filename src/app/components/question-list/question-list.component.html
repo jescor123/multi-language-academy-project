@@ -1,0 +1,93 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>Questions Format 1 configuration </b></h4>
+            </div>        
+          </div>
+        </div>
+         
+        <table class="table table-striped table-hover table-bordered table-content">
+          <thead>
+          </thead>        
+          <tbody>
+            <div *ngFor="let language of languages" class="center-align">
+              <div *ngIf="language.description == 'English'">          
+              <td>              
+                <table class="table table-dark">
+                  <thead>
+                    <tr class="center-align">
+                        <th>Id</th>   
+                        <th>Part 1</th>   
+                        <th>Part 2</th>
+                        <th>Part 3</th> 
+                        <th>Category</th>
+                        <th></th>                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let question of language.questionDTOList" class="center-align">
+                        <td>{{ question.id }}</td>  
+                        <td>{{ question.description1 }}</td>
+                        <td>{{ question.answer }}</td>
+                        <td>{{ question.description2 }}</td> 
+                        <td>{{ getCategoryDescription(question.idCategory) }}</td>
+
+                        <div *ngIf="question.idCategory==1">
+                          <td><button class="btn btn-primary ml-1" type="submit" 
+                            routerLink="/addQuestion" [queryParams]="{ id: question.id,
+                                idCategory: question.idCategory, description1: question.description1,
+                                answer: question.answer, description2: question.description2}">
+                            Modify</button>
+                          </td>
+                        </div>
+
+                        <div *ngIf="question.idCategory==2">
+                          <td><button class="btn btn-primary ml-1" type="submit" 
+                            routerLink="/addQuestion" [queryParams]="{ id: question.id,
+                                idCategory: question.idCategory, description1: question.description1,
+                                answer: question.answer, description2: question.description2, 
+                                  answer2: getAnswer(question.id, 1),
+                                  answer3: getAnswer(question.id, 2),
+                                  idComboFirst: getIdByPosition(question.id, 0), 
+                                  idComboSecond: getIdByPosition(question.id, 1), 
+                                  idComboThird: getIdByPosition(question.id, 2)}">
+                            Modify</button>
+                          </td>
+                        </div>      
+                        
+                        <div *ngIf="question.idCategory==3">
+                          <td><button class="btn btn-primary ml-1" type="submit" 
+                                  routerLink="/addRecordAudioQuiz" [queryParams]="{ id: question.id,
+                                  idCategory: question.idCategory, description1: question.description1,
+                                  answer: question.answer, description2: question.description2,
+                                  urlFileName: question.urlFileName,
+                                  answer2: getAnswerCheckBoxOption(question.id, 1), 
+                                  answer3: getAnswerCheckBoxOption(question.id, 2),
+                                  answer4: getAnswerCheckBoxOption(question.id, 3),
+                                  idComboFirst: getIdByPositionCheckBoxOption(question.id, 0),                                   
+                                  idComboSecond: getIdByPositionCheckBoxOption(question.id, 1),
+                                  idComboThird: getIdByPositionCheckBoxOption(question.id, 2),
+                                  idComboFourth: getIdByPositionCheckBoxOption(question.id, 3)}">
+                            Modify</button>
+                          </td>
+                        </div> 
+                        
+                    </tr> 
+                  </tbody>
+                </table>          
+              </td>    
+            </div>                    
+          </div>
+          <div>
+            <tr>
+              <td *ngIf="languages.length == 0" colspan="6">No questions found</td>
+            </tr>
+          </div>           
+          </tbody>
+        </table>        
+      </div>
+    </div>
+  </div>

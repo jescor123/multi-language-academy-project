@@ -1,0 +1,53 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>List of recordings </b></h4>
+            </div>        
+          </div>
+        </div>
+       
+                <table class="table table-dark">
+                  <thead>
+                    <tr class="center-align">
+                        <th>Id</th>   
+                        <th>Student</th>   
+                        <th>Description</th>
+                        <th></th> 
+                        <th>Download audio</th>   
+                        <th></th>                  
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let file of fileInfos | async" class="center-align">
+                        <td>1</td>  
+                        <td> Daneska1978 </td>
+                        <td> Little Red Riding Hood reading </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <audio controls>
+                              <source [src]="file.url" type="audio/wav">
+                            </audio>
+                          </div>
+                        </td>    
+                        <td>
+                          <li class="list-group-item">
+                            <a href="{{ file.url }}">{{ file.name }}</a>
+                          </li>
+                        </td>   
+                        <td>
+                          <button class="btn btn-primary ml-1" type="submit" 
+                              routerLink="/">
+                              Comment</button>
+                        </td>                                 
+                    </tr>                   
+                  </tbody>
+                </table>  
+
+      </div>
+    </div>
+</div>
+
+

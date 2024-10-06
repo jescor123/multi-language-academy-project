@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+div.mycontainer {
+    width:100%;
+    overflow:auto;
+}
+div.mycontainer div {
+    width:40%;  
+    float:left;
+}
+table, th, td {
+    border:1px solid black;
+    border-collapse: collapse;
+}
