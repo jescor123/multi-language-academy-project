@@ -8,44 +8,12 @@
      </div>
     </div>
 
-    <div class="container d-flex justify-content-left">
-      
-      <div *ngFor="let f of fileInfos | async" class="center-align">
-        <div *ngIf="f.name == question.urlFileName">
-           <div class="d-flex align-items-center">
-             <audio controls>
-               <source [src]="f.url" type="audio/wav">
-             </audio>
-           </div>
-        </div>                                                         
-       </div> 
-
-    </div>
-
-    <br><br>
-
-    <div class="container d-flex justify-content-left">
-
-        <div class="center-align">      
-          <div class="col-10 mb-3">
-            <label class="px-3">Select File: </label>
-            <input type="file" (change)="selectFile($event)" />
-          </div>      
-          <div class="col-2">
-            <button class="btn btn-success btn-sm" (click)="uploadFromBrowser()">
-              Upload
-            </button>
-          </div>
-        </div>
-
-    </div>
-
     <br><br>
            
    <div class="table-title">
      <div class="row">
        <div class="col-sm-6">
-         <h4><b>Available options</b></h4>
+         <h4><b>1. Available options</b></h4>
          <br>
        </div>        
      </div>
@@ -183,10 +151,53 @@
              </tbody>          
            </table>    
           </div>  
+
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>2. Update audio recording</b></h4>
+              <br>
+            </div>        
+          </div>
+
+          <div class="container d-flex justify-content-left">
+      
+            <div *ngFor="let f of fileInfos | async" class="center-align">
+              <div *ngIf="f.name == question.urlFileName">
+                 <div class="d-flex align-items-center">
+                   <audio controls>
+                     <source [src]="f.url" type="audio/wav">
+                   </audio>
+                 </div>
+              </div>                                                         
+             </div> 
+      
+          </div>
+      
+          <br><br>
+      
+          <div class="container d-flex justify-content-left">
+      
+              <div class="center-align">      
+                <div class="col-10 mb-3">
+                  <label class="px-3">Select File: </label>
+                  <input type="file" (change)="selectFile($event)" />
+                </div>    
+                <br><br><br>  
+                <button class="btn btn-primary ml-1" (click)="saveData()">
+                  Apply changes
+                </button>
+              </div>
+      
+          </div>
+
+
          <br> 
-         <button (click)="saveQuestion()" class="btn btn-primary ml-1">Apply changes</button>
+         <!-- <button (click)="saveQuestion()" class="btn btn-primary ml-1">Apply changes</button> -->
        </div>   
     </div>
+
+
+
  
     
       <div *ngIf="submitted">

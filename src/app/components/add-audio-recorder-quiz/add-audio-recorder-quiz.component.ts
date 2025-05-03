@@ -37,7 +37,8 @@ export class AddAudioRecorderQuizComponent implements OnInit {
   fileDetails!: FileDetails;
   fileUris: Array<string> = [];
 
-  constructor(private languageService: LanguageService, private route: ActivatedRoute, private uploadFileService: UploadFileService) {}
+  constructor(private languageService: LanguageService, private route: ActivatedRoute,
+     private uploadFileService: UploadFileService) {}
 
   ngOnInit(): void {
       this.route.queryParamMap.subscribe((paramMap) => {
@@ -119,17 +120,27 @@ export class AddAudioRecorderQuizComponent implements OnInit {
     this.file = event.target.files.item(0);
   }
 
-  uploadFromBrowser() {
+  saveData() {
+   if (this.file != null)  {
+
     this.uploadFileService.uploadFromBrowser(this.file).subscribe({
       next: (data) => {
         this.fileDetails = data;
         this.fileUris.push(this.fileDetails.fileUri);
-        alert("File Uploaded Successfully")   
+        this.saveQuestion();
+        alert("File Uploaded and data saved Successfully");  
       },
       error: (e) => {
         console.log(e);
       }
     });
+
+   } else {
+
+      alert("File is not present, sorry!");
+
+   }
+   
   }
 
 }

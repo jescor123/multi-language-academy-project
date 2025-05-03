@@ -13,6 +13,10 @@ import { HomeComponent } from './components/home/home.component';
 import { RecordingListComponent } from './components/recording-list/recording-list.component';
 import { AudioRecorderComponent } from './components/audio-recorder/audio-recorder.component';
 import { AddAudioRecorderQuizComponent } from './components/add-audio-recorder-quiz/add-audio-recorder-quiz.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { AddReadingImageComponent } from './components/add-reading-image/add-reading-image.component';
+import { SpeakingMeetingListComponent } from './components/speaking-meeting-list/speaking-meeting-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { AddAudioRecorderQuizComponent } from './components/add-audio-recorder-q
     HomeComponent,
     RecordingListComponent,
     AudioRecorderComponent,
-    AddAudioRecorderQuizComponent
+    AddAudioRecorderQuizComponent,
+    LoginComponent,
+    SignupComponent,
+    AddReadingImageComponent,
+    SpeakingMeetingListComponent
   ],
   imports: [
     BrowserModule,

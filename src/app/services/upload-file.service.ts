@@ -8,7 +8,7 @@ import { FileDetails } from '../models/file-details.model';
 })
 export class UploadFileService { 
 
-  private baseUrl = 'http://192.168.1.120:8081';
+  private baseUrl = 'http://192.168.1.104:8081';
 
   constructor(private http: HttpClient) { }
 
@@ -22,8 +22,14 @@ export class UploadFileService {
     return this.http.get(`${this.baseUrl}/v2/files`);
   }
 
+  getImage(imageName: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/v2/imageBlob/${imageName}`, { responseType: 'blob' });
+  }
+
   getFileByName(fileName: any): Observable<any> {
-    return this.http.get(`${this.baseUrl}/v2/fileByName/${fileName}`);
+    let params = new HttpParams();
+    params = params.append('filename', fileName.toString());
+    return this.http.get(`${this.baseUrl}/v2/fileByName/`, { params });
   }
 
   async uploadBlob(audioBlob: any, fileName: any) {

@@ -2,9 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
 
-const baseUrlGet = 'http://192.168.1.120:8081/v2/language-set';
-const baseUrlPost = 'http://192.168.1.120:8081/v2/load-format1-questions';
-
+const baseUrlGet = 'http://192.168.1.104:8081/v2/language-set';
+const baseUrlPost = 'http://192.168.1.104:8081/v2/update-format1-questions';
 
 @Injectable({
   providedIn: 'root'

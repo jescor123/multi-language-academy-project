@@ -1,0 +1,30 @@
+<div class="login-form-container">
+  <div class="form-container">
+    <form [formGroup]="form" class="form shadow m-3 p-3" (ngSubmit)="submitForm()">
+      
+    </form>
+    <form #loginForm="ngForm" (ngSubmit)="onFormSubmit(loginForm.value)" autocomplete="false" class="form">
+      <h4 class="form-header">
+        Login
+        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+      </h4>
+      <div class="control">
+        <label for="email">Email</label>
+        <input ngModel #emailField="ngModel" name="email" id="email" email="true" required type="email">        
+      </div>
+      <div class="control">
+        <label for="password">Password</label>
+        <input ngModel #password="ngModel" minlength="4" name="password" autocomplete="new-password" id="password" required type="password">        
+      </div>
+      <div class="control">
+        <button class="btn btn-primary ml-1">
+          Login
+        </button>
+        <p class="alter-way">
+          <a [routerLink]="'/signup'">Create a new account</a>
+        </p>
+      </div>      
+    </form>
+  </div>
+</div>
+

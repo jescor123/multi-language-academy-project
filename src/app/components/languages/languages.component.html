@@ -55,6 +55,51 @@
           <div *ngIf="submitted"><img [src] ="ImagePath[4]" id="img5" style="width: 20px;height: 20px;"></div>
         
         </div>
+
+        <div class="input-group input-group-sm mb-3">
+
+          6) {{ languages[0].questionDTOList[5].description1 }}
+          <input type="text" id="answer6" name="answer6" size="10" formControlName="answer6" />
+          {{ languages[0].questionDTOList[5].description2 }} 
+          <div *ngIf="submitted"><img [src] ="ImagePath[10]" id="img10" style="width: 20px;height: 20px;"></div>
+        
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+
+          7) {{ languages[0].questionDTOList[6].description1 }}
+          <input type="text" id="answer7" name="answer7" size="10" formControlName="answer7" />
+          {{ languages[0].questionDTOList[6].description2 }} 
+          <div *ngIf="submitted"><img [src] ="ImagePath[11]" id="img11" style="width: 20px;height: 20px;"></div>
+        
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+
+          8) {{ languages[0].questionDTOList[7].description1 }}
+          <input type="text" id="answer8" name="answer8" size="10" formControlName="answer8" />
+          {{ languages[0].questionDTOList[7].description2 }} 
+          <div *ngIf="submitted"><img [src] ="ImagePath[12]" id="img12" style="width: 20px;height: 20px;"></div>
+        
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+
+          9) {{ languages[0].questionDTOList[8].description1 }}
+          <input type="text" id="answer9" name="answer9" size="10" formControlName="answer9" />
+          {{ languages[0].questionDTOList[8].description2 }} 
+          <div *ngIf="submitted"><img [src] ="ImagePath[13]" id="img13" style="width: 20px;height: 20px;"></div>
+        
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+
+          10) {{ languages[0].questionDTOList[9].description1 }}
+          <input type="text" id="answer10" name="answer10" size="10" formControlName="answer10" />
+          {{ languages[0].questionDTOList[9].description2 }} 
+          <div *ngIf="submitted"><img [src] ="ImagePath[14]" id="img14" style="width: 20px;height: 20px;"></div>
+        
+        </div>
  
         <div *ngIf="submitted">
           <div *ngIf="score >= 5; else badResult">
@@ -156,6 +201,196 @@
           <button class="btn btn-primary ml-1" type="submit" *ngIf="!form.get('id')?.value">Send quiz</button>
           <button class="btn btn-primary ml-1" type="submit" *ngIf="form.get('id')?.value">Clear</button>
           <button class="btn btn-danger m-1" type="reset" (click)="form.reset(); cleanOtherComponents2()">Clear</button>
+        </div>
+      </form>    
+     
+    </div>
+  </div>
+</div>
+
+<div class="container-xl">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h4><b>Listening practice - part 3  (10 pts)</b></h4>
+          </div>        
+        </div>
+      </div>
+
+      <form [formGroup]="form3" class="form shadow m-3 p-3" (ngSubmit)="submitForm3()">
+        <h2>Listen to each audio and select the correct option</h2>
+        <br><br>
+
+        <div class="input-group input-group-sm mb-3">          
+            <div class="container d-flex justify-content-left">      
+              <div *ngFor="let f of fileInfos | async" class="center-align">
+                  <div *ngIf="f.name == languages[0].questionDTOList[15].urlFileName">
+                     1)
+                     <div class="d-flex align-items-center">
+                       <audio controls>
+                         <source [src]="f.url" type="audio/wav">
+                       </audio>
+                     </div>
+                     <div>
+                      {{ languages[0].questionDTOList[15].description1 }}       
+                      <div class="col-6" *ngFor="let entry of filterRadioButtonValues(radioButtonValuesList, languages[0].questionDTOList[15].id);">
+                        <input type="radio"
+                               id="option1"
+                               name="option1"
+                               value="{{entry.description}}"
+                               (change)="radioChangeHandler($event)"
+                               formControlName="option1">
+                        {{entry.description}}	
+                      </div>
+                      {{ languages[0].questionDTOList[15].description2 }}
+                    </div>
+                  </div>                                                         
+               </div>     
+            </div>                 
+         <div *ngIf="submitted3"><img [src] ="ImagePath[10]" id="img10" style="width: 20px;height: 20px;"></div> 
+        </div>
+        
+
+        <br><br><br>
+
+        <div class="input-group input-group-sm mb-3">
+          <div class="container d-flex justify-content-left">      
+            <div *ngFor="let f of fileInfos | async" class="center-align">
+              <div *ngIf="f.name == languages[0].questionDTOList[16].urlFileName">
+                2)
+                 <div class="d-flex align-items-center">
+                   <audio controls>
+                     <source [src]="f.url" type="audio/wav">
+                   </audio>
+                 </div>
+                 <div>
+                    {{ languages[0].questionDTOList[16].description1 }}   
+                    <div class="col-6" *ngFor="let entry of filterRadioButtonValues(radioButtonValuesList, languages[0].questionDTOList[16].id);">
+                      <input type="radio"
+                             id="option2"
+                             name="option2"
+                             value="{{entry.description}}"
+                             (change)="radioChangeHandler($event)"
+                             formControlName="option2">
+                      {{entry.description}}
+                    </div>
+                    {{ languages[0].questionDTOList[16].description2 }} 
+                  </div>
+              </div>                                                         
+             </div>     
+          </div>      
+          <div *ngIf="submitted3"><img [src] ="ImagePath[11]" id="img11" style="width: 20px;height: 20px;"></div>   
+        </div>               
+
+        <br><br><br>
+
+        <div class="input-group input-group-sm mb-3">
+          <div class="container d-flex justify-content-left">      
+            <div *ngFor="let f of fileInfos | async" class="center-align">
+              <div *ngIf="f.name == languages[0].questionDTOList[17].urlFileName">
+                3)
+                 <div class="d-flex align-items-center">
+                   <audio controls>
+                     <source [src]="f.url" type="audio/wav">
+                   </audio>
+                 </div>
+                 <div>
+                  {{ languages[0].questionDTOList[17].description1 }}       
+                  <div class="col-6" *ngFor="let entry of filterRadioButtonValues(radioButtonValuesList, languages[0].questionDTOList[17].id);">
+                    <input type="radio"
+                           id="option3"
+                           name="option3"
+                           value="{{entry.description}}"
+                           (change)="radioChangeHandler($event)"
+                           formControlName="option3">
+                    {{entry.description}}	
+                  </div>
+                  {{ languages[0].questionDTOList[17].description2 }} 
+                </div>                 
+              </div>                                                         
+             </div>     
+          </div>       
+          <div *ngIf="submitted3"><img [src] ="ImagePath[12]" id="img12" style="width: 20px;height: 20px;"></div>   
+        </div>               
+
+        <br><br><br>
+
+        <div class="input-group input-group-sm mb-3">
+          <div class="container d-flex justify-content-left">      
+            <div *ngFor="let f of fileInfos | async" class="center-align">
+              <div *ngIf="f.name == languages[0].questionDTOList[18].urlFileName">
+              4)  
+                <div class="d-flex align-items-center">
+                   <audio controls>
+                     <source [src]="f.url" type="audio/wav">
+                   </audio>
+                 </div>
+                 <div>
+                  {{ languages[0].questionDTOList[18].description1 }}        
+                  <div class="col-6" *ngFor="let entry of filterRadioButtonValues(radioButtonValuesList, languages[0].questionDTOList[18].id);">
+                    <input type="radio"
+                           id="option4"
+                           name="option4"
+                           value="{{entry.description}}"
+                           (change)="radioChangeHandler($event)"
+                           formControlName="option4">
+                    {{entry.description}}	
+                  </div>
+                  {{ languages[0].questionDTOList[18].description2 }} 
+                </div>
+              </div>                                                         
+             </div>     
+          </div>        
+          <div *ngIf="submitted3"><img [src] ="ImagePath[13]" id="img13" style="width: 20px;height: 20px;"></div>   
+        </div>        
+
+        <br><br><br>
+
+        <div class="input-group input-group-sm mb-3">
+          <div class="container d-flex justify-content-left">      
+            <div *ngFor="let f of fileInfos | async" class="center-align">
+              <div *ngIf="f.name == languages[0].questionDTOList[19].urlFileName">
+                5) 
+                 <div class="d-flex align-items-center">
+                   <audio controls>
+                     <source [src]="f.url" type="audio/wav">
+                   </audio>
+                 </div>
+                 <div>
+                  {{ languages[0].questionDTOList[19].description1 }}  
+                  <div class="col-6" *ngFor="let entry of filterRadioButtonValues(radioButtonValuesList, languages[0].questionDTOList[19].id);">
+                    <input type="radio"
+                           id="option5"
+                           name="option5"
+                           value="{{entry.description}}"
+                           (change)="radioChangeHandler($event)"
+                           formControlName="option5">
+                    {{entry.description}}	
+                  </div>
+                  {{ languages[0].questionDTOList[19].description2 }}     
+                </div>
+              </div>                                                         
+             </div>     
+          </div>          
+          <div *ngIf="submitted3"><img [src] ="ImagePath[14]" id="img14" style="width: 20px;height: 20px;"></div>   
+        </div>        
+                 
+        <div *ngIf="submitted3">
+          <div *ngIf="score >= 10; else badResult">
+            <h1 style="background-color:rgb(21, 244, 103);"> Your score is : {{ score }}  </h1>
+          </div>        
+          <ng-template #badResult>
+            <h1 style="background-color:tomato;"> Your score is : {{ score }}  </h1>
+          </ng-template>
+        </div>
+        
+        <br>
+        <div style="margin-top:10px">
+          <button class="btn btn-primary ml-1" type="submit" *ngIf="!form.get('id')?.value">Send quiz</button>
+          <button class="btn btn-primary ml-1" type="submit" *ngIf="form.get('id')?.value">Clear</button>
+          <button class="btn btn-danger m-1" type="reset" (click)="form.reset(); cleanOtherComponents3()">Clear</button>
         </div>
       </form>    
      
