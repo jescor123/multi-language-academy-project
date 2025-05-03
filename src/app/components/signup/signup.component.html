@@ -1,0 +1,29 @@
+<div class="signup-form-container">
+  <div class="form-container">
+    <form #signupForm="ngForm" (ngSubmit)="onFormSubmit(signupForm.value)" autocomplete="false" class="form">
+      <h4 class="form-header">Sign up
+        <i class="fa fa-sign-in" aria-hidden="true"></i>
+      </h4>
+      <div class="control">
+        <label for="name">Name</label>
+        <input ngModel #name="ngModel" minlength="3" name="name" required id="name" type="text">        
+      </div>     
+      <div class="control">
+        <label for="email">Email</label>
+        <input ngModel #email="ngModel" email="true" name="email" required id="email" type="text">        
+      </div>
+      <div class="control">
+        <label for="password">Password</label>
+        <input ngModel #password="ngModel" minlength="4" name="password" required autocomplete="new-password" id="password" type="password">        
+      </div>
+      <div class="control">
+        <button class="btn btn-primary ml-1">
+          Sign up
+        </button>
+        <p class="alter-way">
+          <a [routerLink]="'/login'">Already have an account?</a>
+        </p>
+      </div>      
+    </form>
+  </div>
+</div>

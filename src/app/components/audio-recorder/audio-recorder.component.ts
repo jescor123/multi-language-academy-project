@@ -1,4 +1,6 @@
 import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Observable } from 'rxjs';
 import { AudioRecordingService } from 'src/app/services/audio-recording.service';
 import { UploadFileService } from 'src/app/services/upload-file.service';
 
@@ -11,17 +13,25 @@ export class AudioRecorderComponent implements OnInit {
 
   isRecording = false;
   audioURL: string | null = null;
+  imageSrc: any;
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
-
+  
   constructor(private audioRecordingService: AudioRecordingService, private cd: ChangeDetectorRef,
-    private uploadFileService: UploadFileService) {}
+    private uploadFileService: UploadFileService,  private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
     this.audioRecordingService.audioBlob$.subscribe(blob => {
       this.audioURL = window.URL.createObjectURL(blob);
       this.audioPlayer.nativeElement.src = this.audioURL;
       this.cd.detectChanges();      
-    });
+    });        
+    this.uploadFileService.getImage('readingImage.jpg').subscribe(response => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imageSrc = reader.result;
+      };
+      reader.readAsDataURL(response);
+    });  
   }
 
   startRecording() {
